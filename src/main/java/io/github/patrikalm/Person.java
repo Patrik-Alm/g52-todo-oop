@@ -5,9 +5,9 @@ import java.util.Objects;
 public class Person {
 
     private static int sequencer = 1000;
-    private int id;
-    private String firstName;   //have to fix check null not allowed
-    private String lastName;    //have to fix check null not allowed
+    private int id; //is generated
+    private String firstName;   //have a null or empty check
+    private String lastName;    //have null or empty check
     private String email;
 
 
@@ -24,7 +24,7 @@ public class Person {
 
     public Person(String firstName, String lastName){
 
-        new Person(firstName, lastName, "Email not available.");
+        this(firstName, lastName, "Email not available.");
     }
 
     //methods
@@ -58,6 +58,7 @@ public class Person {
         if (lastName == null || lastName.trim().isEmpty())
             throw new IllegalArgumentException("Lastname can not be null or empty.");
 
+
         this.lastName = lastName;
     }
 
@@ -73,14 +74,19 @@ public class Person {
         this.email = email;
     }
 
-    public void getSummary() {
+    public String getSummary() {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("ID number: " + id);
-        sb.append(", Name: " + firstName + " " + lastName);
-        sb.append(", Email: " + email);
+        sb.append("ID number: ");
+        sb.append(id);
+        sb.append(", Name: ");
+        sb.append(firstName);
+        sb.append(" ");
+        sb.append(lastName);
+        sb.append(", Email: ");
+        sb.append(email);
 
-        System.out.println(sb);
+        return sb.toString();
     }
 }

@@ -6,7 +6,12 @@ public class Main {
 
         Person person1 = new Person("Mehrdad", "Javan", "Mehrdad@javan.com");
 
-        person1.getSummary();
+        Person person2 = new Person("Marcus", "Gudmundsen");
+
+        System.out.println(person1.getSummary());
+        System.out.println(person2.getSummary());
+
+
 
     }
 
