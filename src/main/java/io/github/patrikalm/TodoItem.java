@@ -15,17 +15,15 @@ public class TodoItem {
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator) {
 
-        this.id = getId();
+        id = getId();
         setTitle(title);
         setTaskDescription(taskDescription);
         setDeadLine(deadLine);
         setCreator(creator);
-
-
     }
 
     private int getId() {
-
+        // returns id number and is raised with one step afterwards to also use id 1000.
         return sequencer++;
     }
 
@@ -36,7 +34,11 @@ public class TodoItem {
 
     public void setTitle(String title) {
 
-        //have to implement check null or empty not allowed
+
+
+        if (title == null || title.equals(" ")) {
+            throw new IllegalArgumentException("Can not be null or empty.");
+        }
 
         this.title = title;
     }
@@ -59,7 +61,10 @@ public class TodoItem {
 
     public void setDeadLine(LocalDate deadLine) {
 
-        //have to implement check null not allowed
+        if (deadLine == null) {
+
+            throw new IllegalArgumentException("Can not be null.");
+        }
 
         this.deadLine = deadLine;
     }
@@ -86,12 +91,7 @@ public class TodoItem {
 
     public boolean isOverdue() {
 
-        if (LocalDate.now().isAfter(getDeadLine())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return LocalDate.now().isAfter(getDeadLine());
     }
 
     public String getSummary() {
@@ -109,6 +109,9 @@ public class TodoItem {
         // add new line with sb.append()
         sb.append("Deadline: ");
         sb.append(deadLine);
+        // add new line with sb.append()
+        sb.append("Created by: ");
+        sb.append(creator);
         // add new line with sb.append()
         sb.append("Status: ");
 
