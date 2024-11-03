@@ -98,7 +98,8 @@ public class TodoItem {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Id: ");
+        sb.append(System.lineSeparator());
+        sb.append("Todo id: ");
         sb.append(id);
         sb.append(System.lineSeparator());
         sb.append("Task: ");
