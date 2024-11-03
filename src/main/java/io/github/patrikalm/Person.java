@@ -29,7 +29,7 @@ public class Person {
 
     //methods
 
-    public int getId() {
+    private int getId() {
 
         return sequencer++;
 

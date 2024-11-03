@@ -1,41 +1,27 @@
 package io.github.patrikalm;
 
-import java.time.LocalDate;
-
 public class TodoItemTask {
 
     private static int sequencer = 1000;
     private int id;
-    private String title;
-    private String taskDescription;
-    private LocalDate deadLine;
-    private boolean done;
-    private Person creator;
+    private boolean assigned = false;
+    private TodoItem todoItem;
+    private Person assignee;
 
 
-    public TodoItemTask (String title, String taskDescription, LocalDate deadLine, Person creator) {
+
+    public TodoItemTask(Person assignee, TodoItem todoItem) {
 
         this.id = getId();
-        this.title = title;
-        this.taskDescription = taskDescription;
-        this.deadLine = deadLine;
-
-
+        this.assignee = assignee;
+        this.todoItem = todoItem;
 
     }
 
-    public int getId() {
+    private int getId() {
 
         return sequencer++;
-
     }
-
-    public String getTitle() {
-
-
-    }
-
-
 
 
 }
