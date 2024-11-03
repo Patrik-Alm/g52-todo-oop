@@ -24,10 +24,7 @@ public class Person {
 
     }
 
-    public Person(String firstName, String lastName){
 
-        this(firstName, lastName, "Email not available.");
-    }
 
     //methods
 

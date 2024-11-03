@@ -18,6 +18,8 @@ public class TodoItemTask {
 
     }
 
+
+
     private int getId() {
 
         return sequencer++;
@@ -69,7 +71,11 @@ public class TodoItemTask {
         sb.append(System.lineSeparator());
         sb.append("Assigned to: ");
         if (isAssigned()) {
-            sb.append(assignee);
+            sb.append(assignee.getFirstName());
+            sb.append(" ");
+            sb.append(assignee.getLastName());
+            sb.append(", Email: ");
+            sb.append(assignee.getEmail());
         }
         else {
             sb.append("Is not assigned to anyone.");

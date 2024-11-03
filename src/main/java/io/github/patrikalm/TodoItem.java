@@ -1,6 +1,7 @@
 package io.github.patrikalm;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class TodoItem {
 
@@ -8,17 +9,21 @@ public class TodoItem {
     private int id;
     private String title;
     private String taskDescription;
+
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    private String deadLineDate;
     private LocalDate deadLine;
     private boolean done = false;
     private Person creator;
 
 
-    public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator) {
+    public TodoItem(String title, String taskDescription, String deadLineDate, Person creator) {
 
         id = getId();
         setTitle(title);
         setTaskDescription(taskDescription);
-        setDeadLine(deadLine);
+        setDeadLine(deadLineDate);
         setCreator(creator);
     }
 
@@ -59,14 +64,14 @@ public class TodoItem {
         return deadLine;
     }
 
-    public void setDeadLine(LocalDate deadLine) {
+    public void setDeadLine(String deadLineDate) {
 
-        if (deadLine == null) {
+        if (deadLineDate == null) {
 
             throw new IllegalArgumentException("Can not be null.");
         }
 
-        this.deadLine = deadLine;
+        this.deadLine = LocalDate.parse(deadLineDate, dateFormat);
     }
 
     public void setDone() {
@@ -112,7 +117,11 @@ public class TodoItem {
         sb.append(deadLine);
         sb.append(System.lineSeparator());
         sb.append("Created by: ");
-        sb.append(creator);
+        sb.append(creator.getFirstName());
+        sb.append(" ");
+        sb.append(creator.getLastName());
+        sb.append(", Email: ");
+        sb.append(creator.getEmail());
         sb.append(System.lineSeparator());
         sb.append("Status: ");
 
