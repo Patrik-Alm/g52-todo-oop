@@ -78,7 +78,8 @@ public class Person {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("ID number: ");
+        sb.append(System.lineSeparator());
+        sb.append("Person id: ");
         sb.append(id);
         sb.append(System.lineSeparator());
         sb.append("Name: ");

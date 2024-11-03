@@ -12,15 +12,70 @@ public class TodoItemTask {
 
     public TodoItemTask(Person assignee, TodoItem todoItem) {
 
-        this.id = getId();
-        this.assignee = assignee;
-        this.todoItem = todoItem;
+        id = getId();
+        setAssignee(assignee);
+        setTodoItem(todoItem);
 
     }
 
     private int getId() {
 
         return sequencer++;
+    }
+
+    public boolean isAssigned() {
+
+        return assigned;
+    }
+
+    public void setAssigned() {
+
+        assigned = true;
+    }
+
+    public TodoItem getTodoItem() {
+
+        return todoItem;
+    }
+
+    public void setTodoItem(TodoItem todoItem) {
+
+        if (todoItem == null) throw new IllegalArgumentException("Can not be null.");
+
+        this.todoItem = todoItem;
+    }
+
+    public Person getAssignee() {
+
+        return assignee;
+    }
+
+    public void setAssignee(Person assignee) {
+
+        this.assignee = assignee;
+        setAssigned();
+    }
+
+    public String getSummary() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(System.lineSeparator());
+        sb.append("Task Id; ");
+        sb.append(id);
+        sb.append(System.lineSeparator());
+        sb.append("Task todo: ");
+        sb.append(todoItem.getTitle());
+        sb.append(System.lineSeparator());
+        sb.append("Assigned to: ");
+        if (isAssigned()) {
+            sb.append(assignee);
+        }
+        else {
+            sb.append("Is not assigned to anyone.");
+        }
+
+        return sb.toString();
     }
 
 
