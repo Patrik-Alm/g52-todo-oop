@@ -1,5 +1,7 @@
 package io.github.patrikalm;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Objects;
 
 public class Person {
@@ -29,10 +31,9 @@ public class Person {
 
     //methods
 
-    private int getId() {
+      private int getId() {
 
         return sequencer++;
-
     }
 
     public String getFirstName() {
