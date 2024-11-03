@@ -80,11 +80,13 @@ public class Person {
 
         sb.append("ID number: ");
         sb.append(id);
-        sb.append(", Name: ");
+        sb.append(System.lineSeparator());
+        sb.append("Name: ");
         sb.append(firstName);
         sb.append(" ");
         sb.append(lastName);
-        sb.append(", Email: ");
+        sb.append(System.lineSeparator());
+        sb.append("Email: ");
         sb.append(email);
 
         return sb.toString();

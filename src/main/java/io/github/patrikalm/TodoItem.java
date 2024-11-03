@@ -100,19 +100,19 @@ public class TodoItem {
 
         sb.append("Id: ");
         sb.append(id);
-        // add new line with sb.append()
+        sb.append(System.lineSeparator());
         sb.append("Task: ");
         sb.append(title);
-        // add new line with sb.append()
+        sb.append(System.lineSeparator());
         sb.append("Description: ");
         sb.append(taskDescription);
-        // add new line with sb.append()
+        sb.append(System.lineSeparator());
         sb.append("Deadline: ");
         sb.append(deadLine);
-        // add new line with sb.append()
+        sb.append(System.lineSeparator());
         sb.append("Created by: ");
         sb.append(creator);
-        // add new line with sb.append()
+        sb.append(System.lineSeparator());
         sb.append("Status: ");
 
         if (isDone()) {
