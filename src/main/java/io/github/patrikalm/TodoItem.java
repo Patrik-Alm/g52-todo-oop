@@ -2,6 +2,7 @@ package io.github.patrikalm;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class TodoItem {
 
@@ -66,9 +67,9 @@ public class TodoItem {
 
     public void setDeadLine(String deadLineDate) {
 
-        if (deadLineDate == null) {
+        if (deadLineDate == null || deadLineDate.equals(" "))  {
 
-            throw new IllegalArgumentException("Can not be null.");
+            throw new DateTimeParseException("Can not be null or empty", " ", 0);
         }
 
         this.deadLine = LocalDate.parse(deadLineDate, dateFormat);

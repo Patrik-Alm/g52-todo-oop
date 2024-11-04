@@ -5,19 +5,17 @@ public class TodoItemTask {
     private static int sequencer = 1000;
     private int id;
     private boolean assigned = false;
-    private TodoItem todoItem;
     private Person assignee;
+    private TodoItem todoItem;
 
 
 
-    public TodoItemTask(Person assignee, TodoItem todoItem) {
+
+    public TodoItemTask(TodoItem todoItem) {
 
         id = getId();
-        setAssignee(assignee);
         setTodoItem(todoItem);
-
     }
-
 
 
     private int getId() {
