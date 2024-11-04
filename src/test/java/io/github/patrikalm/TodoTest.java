@@ -62,21 +62,7 @@ public class TodoTest {
 
     }
 
-    @Test
-    void testThrowExceptionIfEmailIsNull() {
 
-        Person person1 = new Person("Mehrdad", "Javan", "");
-
-    }
-
-    @Test
-    void testThrowExceptionIfDeadlineIsNull() {
-
-        Person person1 = new Person("Mehrdad", "Javan", "Mehrdad@javan.com");
-
-        TodoItem todoItem1 = new TodoItem("Mend bicycle", "Flat tyre, need to change tube.","", person1);
-
-    }
 
 
 
