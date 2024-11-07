@@ -19,7 +19,7 @@ public class AppUser {
 
     public String getUsername() {
 
-        return "0";
+        return this.username;
     }
 
     private void setUsername(String username) {
@@ -29,7 +29,7 @@ public class AppUser {
 
     public String getPassword() {
 
-        return "0";
+        return this.password;
     }
 
     private void setPassword(String password) {
@@ -49,14 +49,21 @@ public class AppUser {
 
     @Override
     public boolean equals(Object obj) {
-        // have to check how to solve this.  if (obj == this.username)
 
-        return true;
+        AppUser localUser = (AppUser) obj;
+
+        if (this.username == localUser.username) {
+
+            return this.role == localUser.role;
+        }
+
+        return false;
     }
+
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return username.hashCode() + role.hashCode();
     }
 
     @Override
