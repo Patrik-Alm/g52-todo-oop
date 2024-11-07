@@ -49,7 +49,8 @@ public class AppUser {
 
     @Override
     public boolean equals(Object obj) {
-        if
+        // have to check how to solve this.  if (obj == this.username)
+
         return true;
     }
 
@@ -60,7 +61,7 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Username: "+ username + "/nRole: " + role;
     }
 
 

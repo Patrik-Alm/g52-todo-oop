@@ -8,8 +8,8 @@ public class Person {
 
     private static int sequencer = 1000;
     private int id; //is generated
-    private String firstName;   //have a null or empty check
-    private String lastName;    //have null or empty check
+    private String firstName;   //has null or empty check
+    private String lastName;    //has null or empty check
     private String email;
 
 
