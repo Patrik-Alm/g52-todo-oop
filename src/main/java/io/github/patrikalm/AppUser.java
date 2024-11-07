@@ -23,6 +23,8 @@ public class AppUser {
     }
 
     private void setUsername(String username) {
+        if (username== null || username.trim().isEmpty())
+            throw new IllegalArgumentException("Username can not be null or empty.");
 
         this.username = username;
     }
@@ -34,6 +36,9 @@ public class AppUser {
 
     private void setPassword(String password) {
 
+        if (password == null || password.trim().isEmpty())
+            throw new IllegalArgumentException("Password can not be null or empty.");
+
         this.password = password;
     }
 
@@ -44,7 +49,10 @@ public class AppUser {
 
     private void setRole(AppRole role) {
 
-        this.role = role;
+        if (role == null)
+            throw new IllegalArgumentException("Role can not be null");
+
+       this.role = role;
     }
 
     @Override
