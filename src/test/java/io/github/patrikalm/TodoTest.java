@@ -62,7 +62,35 @@ public class TodoTest {
 
     }
 
+    @Test
+    void testIsEqualFalseWrongRole() {
 
+        AppUser person1 = new AppUser("Björn32", "0000", AppRole.APP_ROLE_USER);
+
+        AppUser person2 = new AppUser("Björn32", "1234", AppRole.APP_ROLE_ADMIN);
+
+        assertFalse(person1.equals(person2));
+    }
+
+    @Test
+    void testIsEqualFalseWrongUser() {
+
+        AppUser person1 = new AppUser("Björn32", "0000", AppRole.APP_ROLE_USER);
+
+        AppUser person2 = new AppUser("Björn33", "1234", AppRole.APP_ROLE_ADMIN);
+
+        assertFalse(person1.equals(person2));
+    }
+
+    @Test
+    void testIsEqualTrue() {
+
+        AppUser person1 = new AppUser("Björn32", "0000", AppRole.APP_ROLE_USER);
+
+        AppUser person2 = new AppUser("Björn32", "1234", AppRole.APP_ROLE_USER);
+
+        assertTrue(person1.equals(person2));
+    }
 
 
 

@@ -4,7 +4,7 @@ import java.sql.SQLOutput;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        /*System.out.println("Hello world!");
 
         Person person1 = new Person("Mehrdad", "Javan", "Mehrdad@javan.com");
 
@@ -21,7 +21,10 @@ public class Main {
 
         TodoItemTask todoItemTask1 = new TodoItemTask(todoItem1);
 
-        System.out.println(todoItemTask1.getSummary());
+        System.out.println(todoItemTask1.getSummary()); */
+
+
+
 
 
 
