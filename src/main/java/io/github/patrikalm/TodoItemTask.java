@@ -56,7 +56,7 @@ public class TodoItemTask {
         setAssigned();
     }
 
-    public String getSummary() {
+   /* public String getSummary() {
 
         StringBuilder sb = new StringBuilder();
 
@@ -80,6 +80,42 @@ public class TodoItemTask {
         }
 
         return sb.toString();
+    } */
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(System.lineSeparator());
+        sb.append("Task Id; ");
+        sb.append(id);
+        sb.append(System.lineSeparator());
+        sb.append("Task todo: ");
+        sb.append(todoItem.getTitle());
+        sb.append(System.lineSeparator());
+
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        TodoItemTask localTodoItemTask = (TodoItemTask) obj;
+
+        if (this.id == localTodoItemTask.id
+                && this.todoItem == localTodoItemTask.todoItem) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return todoItem.hashCode();
     }
 
 

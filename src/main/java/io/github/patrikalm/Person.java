@@ -12,6 +12,8 @@ public class Person {
     private String lastName;    //has null or empty check
     private String email;
 
+    private AppUser credentials;
+
 
     //constructor
 
@@ -21,12 +23,24 @@ public class Person {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        AppUser credentials;
 
     }
 
 
 
     //methods
+
+    public void setCredentials(String username, String password, AppRole role) {
+
+        this.credentials = new AppUser(username, password, role);
+
+    }
+
+    public AppUser getCredentials() {
+
+        return this.credentials;
+    }
 
       private int getId() {
 
@@ -72,7 +86,8 @@ public class Person {
         this.email = email;
     }
 
-    public String getSummary() {
+    @Override
+    public String toString() {
 
         StringBuilder sb = new StringBuilder();
 
@@ -89,5 +104,27 @@ public class Person {
         sb.append(email);
 
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        Person localPerson = (Person) obj;
+
+        if (this.firstName == localPerson.firstName
+                && this.lastName == localPerson.lastName
+                && this.email == localPerson.email
+                && this.id == localPerson.id) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return firstName.hashCode() + lastName.hashCode() + email.hashCode();
     }
 }

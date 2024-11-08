@@ -100,7 +100,7 @@ public class TodoItem {
         return LocalDate.now().isAfter(getDeadLine());
     }
 
-    public String getSummary() {
+   /* public String getSummary() {
 
         StringBuilder sb = new StringBuilder();
 
@@ -137,6 +137,62 @@ public class TodoItem {
         }
 
         return sb.toString();
+    } */
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(System.lineSeparator());
+        sb.append("Todo id: ");
+        sb.append(id);
+        sb.append(System.lineSeparator());
+        sb.append("Task: ");
+        sb.append(title);
+        sb.append(System.lineSeparator());
+        sb.append("Description: ");
+        sb.append(taskDescription);
+        sb.append(System.lineSeparator());
+        sb.append("Deadline: ");
+        sb.append(deadLine);
+        sb.append(System.lineSeparator());
+        sb.append("Status: ");
+
+        if (isDone()) {
+            sb.append("The task is done.");
+        }
+        else if (isOverdue()) {
+            sb.append("The task is overdue.");
+        }
+        else {
+            sb.append("The task is not done");
+        }
+
+        return sb.toString();
+
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        TodoItem localTodoItem = (TodoItem) obj;
+
+        if (this.id == localTodoItem.id
+        && this.title == localTodoItem.title
+        && this.taskDescription == localTodoItem.taskDescription
+        && this.deadLine == localTodoItem.deadLine) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+   @Override
+    public int hashCode() {
+
+        return title.hashCode() + taskDescription.hashCode() + deadLine.hashCode();
+   }
 
 }
