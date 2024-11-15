@@ -1,4 +1,4 @@
-package io.github.patrikalm;
+package io.github.patrikalm.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

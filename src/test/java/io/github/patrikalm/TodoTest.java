@@ -1,6 +1,6 @@
 package io.github.patrikalm;
 
-import org.junit.jupiter.api.BeforeEach;
+import io.github.patrikalm.model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

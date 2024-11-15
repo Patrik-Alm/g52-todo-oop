@@ -1,8 +1,4 @@
-package io.github.patrikalm;
-
-import org.junit.jupiter.api.Test;
-
-import java.util.Objects;
+package io.github.patrikalm.model;
 
 public class Person {
 

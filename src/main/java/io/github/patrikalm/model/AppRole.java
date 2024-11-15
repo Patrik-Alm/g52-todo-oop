@@ -1,4 +1,4 @@
-package io.github.patrikalm;
+package io.github.patrikalm.model;
 
 public enum AppRole {
 
