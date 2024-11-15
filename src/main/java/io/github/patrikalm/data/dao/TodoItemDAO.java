@@ -1,11 +1,8 @@
 package io.github.patrikalm.data.dao;
 
 import io.github.patrikalm.model.TodoItem;
-
 import java.time.LocalDate;
 import java.util.Collection;
-
-io.github.patrikalm.model.TodoItem;
 
 
 public interface TodoItemDAO {

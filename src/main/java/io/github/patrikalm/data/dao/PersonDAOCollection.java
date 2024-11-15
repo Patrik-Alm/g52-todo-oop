@@ -6,7 +6,6 @@ import java.util.Collection;
 
 public class PersonDAOCollection implements PersonDAO {
 
-
     @Override
     public Person persist(Person person) {
         return null;

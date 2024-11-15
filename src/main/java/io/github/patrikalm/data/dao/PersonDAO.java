@@ -4,15 +4,17 @@ import io.github.patrikalm.model.Person;
 
 import java.util.Collection;
 
-
 public interface PersonDAO {
 
-Person persist(Person person);
+    Person persist(Person person);
 
-Person findById(int id);
+    Person findById(int id);
 
-Collection<Person> findAll();
+    Collection<Person> findAll();
 
-void remove(int id);
+    void remove(int id);
 
 }
+
+
+
