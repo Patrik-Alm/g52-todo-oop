@@ -13,14 +13,14 @@ public class TodoItemTask {
 
     public TodoItemTask(TodoItem todoItem) {
 
-        id = getId();
+        id = sequencer++;
         setTodoItem(todoItem);
     }
 
 
-    private int getId() {
-
-        return sequencer++;
+    public int getId() {
+        //changed due to DAO implementation to public and to return int id
+        return this.id;
     }
 
     public boolean isAssigned() {

@@ -10,6 +10,8 @@ public interface PersonDAO {
 
     Person findById(int id);
 
+    Person findByEmail(String email);
+
     Collection<Person> findAll();
 
     void remove(int id);

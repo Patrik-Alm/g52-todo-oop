@@ -2,7 +2,9 @@ package io.github.patrikalm.data.sequencers;
 
 public class TodoItemTaskIdSequencer {
 
-    static int currentId;
+    // Sequencer implemented using private static variable to secure each instance has the same id sequence
+    // Ready but not in use
+    private static int currentId;
 
 
     public static int nextId() {

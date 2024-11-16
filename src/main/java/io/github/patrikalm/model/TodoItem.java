@@ -21,16 +21,16 @@ public class TodoItem {
 
     public TodoItem(String title, String taskDescription, String deadLineDate, Person creator) {
 
-        id = getId();
+        id = sequencer++;
         setTitle(title);
         setTaskDescription(taskDescription);
         setDeadLine(deadLineDate);
         setCreator(creator);
     }
 
-    private int getId() {
-        // returns id number and is raised with one step afterwards to also use id 1000.
-        return sequencer++;
+    public int getId() {
+       //changed due to DAO implementation to public and to return int id
+        return this.id;
     }
 
     public String getTitle() {

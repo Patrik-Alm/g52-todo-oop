@@ -15,15 +15,12 @@ public class Person {
 
     public Person(String firstName, String lastName, String email) {
 
-        this.id =getId();
+        this.id = sequencer++;
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
         AppUser credentials;
-
     }
-
-
 
     //methods
 
@@ -38,9 +35,9 @@ public class Person {
         return this.credentials;
     }
 
-      private int getId() {
-
-        return sequencer++;
+    public int getId() {
+    //changed due to DAO implementation to public and to return int id
+        return this.id;
     }
 
     public String getFirstName() {

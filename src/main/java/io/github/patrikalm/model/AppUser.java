@@ -60,7 +60,7 @@ public class AppUser {
 
         AppUser localUser = (AppUser) obj;
 
-        if (this.username == localUser.username) {
+        if (this.username.equals(localUser.username)) {
 
             return this.role == localUser.role;
         }
@@ -71,11 +71,13 @@ public class AppUser {
 
     @Override
     public int hashCode() {
+
         return username.hashCode() + role.hashCode();
     }
 
     @Override
     public String toString() {
+
         return "Username: "+ username + "/nRole: " + role;
     }
 
