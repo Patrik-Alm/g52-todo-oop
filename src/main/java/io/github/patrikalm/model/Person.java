@@ -24,9 +24,9 @@ public class Person {
 
     //methods
 
-    public void setCredentials(String username, String password, AppRole role) {
+    public void setCredentials(String username, String password) {
 
-        this.credentials = new AppUser(username, password, role);
+        this.credentials = new AppUser(username, password);
 
     }
 

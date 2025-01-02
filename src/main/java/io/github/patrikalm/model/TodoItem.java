@@ -6,8 +6,6 @@ import java.time.format.DateTimeParseException;
 
 public class TodoItem {
 
-    private static int sequencer = 1000;
-    private int id;
     private String title;
     private String taskDescription;
 
@@ -16,7 +14,7 @@ public class TodoItem {
     private String deadLineDate;
     private LocalDate deadLine;
     private boolean done = false;
-    private Person creator;
+
 
 
     public TodoItem(String title, String taskDescription, String deadLineDate, Person creator) {
@@ -25,7 +23,6 @@ public class TodoItem {
         setTitle(title);
         setTaskDescription(taskDescription);
         setDeadLine(deadLineDate);
-        setCreator(creator);
     }
 
     public int getId() {
@@ -85,20 +82,8 @@ public class TodoItem {
         return done;
     }
 
-    public Person getCreator() {
 
-        return creator;
-    }
 
-    public void setCreator(Person creator) {
-
-        this.creator = creator;
-    }
-
-    public boolean isOverdue() {
-
-        return LocalDate.now().isAfter(getDeadLine());
-    }
 
    /* public String getSummary() {
 
