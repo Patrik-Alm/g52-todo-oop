@@ -15,7 +15,7 @@ public class Main {
         System.out.println(person1.getSummary());
         System.out.println(person2.getSummary());
 
-        TodoItem todoItem1 = new TodoItem("Mend bicykle", "Flat tyre, need to change tube.","2024-11-05", person2);
+        Todo todoItem1 = new Todo("Mend bicykle", "Flat tyre, need to change tube.","2024-11-05", person2);
 
         System.out.println(todoItem1.getSummary());
 

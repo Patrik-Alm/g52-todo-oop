@@ -8,7 +8,6 @@ public class Person {
     private String lastName;    //has null or empty check
     private String email;
 
-    private AppUser credentials;
 
 
     //constructor
@@ -19,21 +18,9 @@ public class Person {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
-        AppUser credentials;
     }
 
     //methods
-
-    public void setCredentials(String username, String password) {
-
-        this.credentials = new AppUser(username, password);
-
-    }
-
-    public AppUser getCredentials() {
-
-        return this.credentials;
-    }
 
     public int getId() {
     //changed due to DAO implementation to public and to return int id

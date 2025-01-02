@@ -6,15 +6,15 @@ public class TodoItemTask {
     private int id;
     private boolean assigned = false;
     private Person assignee;
-    private TodoItem todoItem;
+    private Todo todo;
 
 
 
 
-    public TodoItemTask(TodoItem todoItem) {
+    public TodoItemTask(Todo todo) {
 
         id = sequencer++;
-        setTodoItem(todoItem);
+        setTodoItem(todo);
     }
 
 
@@ -33,16 +33,16 @@ public class TodoItemTask {
         assigned = true;
     }
 
-    public TodoItem getTodoItem() {
+    public Todo getTodoItem() {
 
-        return todoItem;
+        return todo;
     }
 
-    public void setTodoItem(TodoItem todoItem) {
+    public void setTodoItem(Todo todo) {
 
-        if (todoItem == null) throw new IllegalArgumentException("Can not be null.");
+        if (todo == null) throw new IllegalArgumentException("Can not be null.");
 
-        this.todoItem = todoItem;
+        this.todo = todo;
     }
 
     public Person getAssignee() {
@@ -65,7 +65,7 @@ public class TodoItemTask {
         sb.append(id);
         sb.append(System.lineSeparator());
         sb.append("Task todo: ");
-        sb.append(todoItem.getTitle());
+        sb.append(todo.getTitle());
         sb.append(System.lineSeparator());
         sb.append("Assigned to: ");
         if (isAssigned()) {
@@ -92,7 +92,7 @@ public class TodoItemTask {
         sb.append(id);
         sb.append(System.lineSeparator());
         sb.append("Task todo: ");
-        sb.append(todoItem.getTitle());
+        sb.append(todo.getTitle());
         sb.append(System.lineSeparator());
 
         return sb.toString();
@@ -104,7 +104,7 @@ public class TodoItemTask {
         TodoItemTask localTodoItemTask = (TodoItemTask) obj;
 
         if (this.id == localTodoItemTask.id
-                && this.todoItem == localTodoItemTask.todoItem) {
+                && this.todo == localTodoItemTask.todo) {
 
             return true;
         }
@@ -115,7 +115,7 @@ public class TodoItemTask {
     @Override
     public int hashCode() {
 
-        return todoItem.hashCode();
+        return todo.hashCode();
     }
 
 

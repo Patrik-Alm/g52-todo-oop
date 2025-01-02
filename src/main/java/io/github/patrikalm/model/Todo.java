@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class TodoItem {
+public class Todo {
 
     private String title;
     private String taskDescription;
@@ -17,7 +17,7 @@ public class TodoItem {
 
 
 
-    public TodoItem(String title, String taskDescription, String deadLineDate, Person creator) {
+    public Todo(String title, String taskDescription, String deadLineDate, Person creator) {
 
         id = sequencer++;
         setTitle(title);
@@ -161,12 +161,12 @@ public class TodoItem {
     @Override
     public boolean equals(Object obj) {
 
-        TodoItem localTodoItem = (TodoItem) obj;
+        Todo localTodo = (Todo) obj;
 
-        if (this.id == localTodoItem.id
-        && this.title == localTodoItem.title
-        && this.taskDescription == localTodoItem.taskDescription
-        && this.deadLine == localTodoItem.deadLine) {
+        if (this.id == localTodo.id
+        && this.title == localTodo.title
+        && this.taskDescription == localTodo.taskDescription
+        && this.deadLine == localTodo.deadLine) {
 
             return true;
         }
