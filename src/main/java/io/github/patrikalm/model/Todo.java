@@ -125,14 +125,11 @@ public class Todo {
         sb.append(System.lineSeparator());
         sb.append("Status: ");
 
-        if (isDone() == 1) {
+        if (isDone()) {
             sb.append("The task is done.");
         }
-        else if (isDone() == 0) {
-            sb.append("The task is not done");
-        }
         else {
-            sb.append("Something is wrong with the status code ").append(isDone());
+            sb.append("The task is not done");
         }
 
         sb.append(System.lineSeparator());
