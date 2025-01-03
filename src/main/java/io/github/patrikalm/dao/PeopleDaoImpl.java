@@ -17,7 +17,7 @@ public class PeopleDaoImpl implements PeopleDao {
     @Override
     public Person create(Person person) {
 
-        String sql = "INSERT INTO person VALUES(?, ?)";
+        String sql = "INSERT INTO person (first_name, last_name) VALUES (?, ?)";
 
         // try with resources so we do not have to close connection
 
@@ -33,9 +33,15 @@ public class PeopleDaoImpl implements PeopleDao {
                 // Sending the generated id with the returned Person
                 // What if id is not null in the person sent in as argument? - Should not affect as DB does not handle it and below it is overridden.
 
-                int id = PreparedStatement.RETURN_GENERATED_KEYS;
+               try (ResultSet resultSet = preparedstatement.getGeneratedKeys()) {
 
-                person.setId(id);
+                  if (resultSet.next()) {
+                      person.setId(resultSet.getInt(1));
+                  }
+
+               } catch (RuntimeException e) {
+                   throw new RuntimeException("Oops, something happened when getting the created id" + e.getMessage());
+               }
 
                 return person;
             }

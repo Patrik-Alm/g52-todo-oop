@@ -17,7 +17,7 @@ public class TodoItemsDaoImpl implements TodoItemsDao {
     @Override
     public Todo create(Todo todo) {
 
-        String sql = "INSERT INTO todo_item VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO todo_item (title, description, deadline, done) VALUES(?, ?, ?, ?)";
 
         Date deadlineDate = Date.valueOf(todo.getDeadLine());
         int done = (todo.isDone() ? 1 : 0);
@@ -30,7 +30,8 @@ public class TodoItemsDaoImpl implements TodoItemsDao {
             preparedstatement.setString(2, todo.getDescription());
             preparedstatement.setDate(3, deadlineDate);
             preparedstatement.setInt(4, done);
-            preparedstatement.setInt(5, todo.getAssigneeId());
+            //assignee_id is restricted for updates
+
 
 
             int rowsAffected = preparedstatement.executeUpdate();
@@ -40,9 +41,15 @@ public class TodoItemsDaoImpl implements TodoItemsDao {
                 // Sending the generated id back with the returned instance
                 // What if id is not null in the person sent in as argument? - Should not affect as DB does not handle it and below it is overridden.
 
-                int id = PreparedStatement.RETURN_GENERATED_KEYS;
+                try (ResultSet resultSet = preparedstatement.getGeneratedKeys()) {
 
-                todo.setId(id);
+                    if (resultSet.next()) {
+                        todo.setId(resultSet.getInt(1));
+                    }
+
+                } catch (RuntimeException e) {
+                    throw new RuntimeException("Oops, something happened when getting the created id" + e.getMessage());
+                }
 
                 return todo;
             }

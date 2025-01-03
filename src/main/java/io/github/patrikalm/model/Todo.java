@@ -96,7 +96,7 @@ public class Todo {
 
     public boolean isDone() {
 
-        return done;
+        return this.done;
     }
 
    public void setId(int id) {

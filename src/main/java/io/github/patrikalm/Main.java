@@ -1,27 +1,48 @@
 package io.github.patrikalm;
 
+import io.github.patrikalm.dao.PeopleDao;
+import io.github.patrikalm.dao.PeopleDaoImpl;
+import io.github.patrikalm.dao.TodoItemsDao;
+import io.github.patrikalm.dao.TodoItemsDaoImpl;
+import io.github.patrikalm.model.Person;
+import io.github.patrikalm.model.Todo;
+
 import java.sql.SQLOutput;
 
 public class Main {
     public static void main(String[] args) {
-        /*System.out.println("Hello world!");
 
-        Person person1 = new Person("Mehrdad", "Javan", "Mehrdad@javan.com");
 
-        Person person2 = new Person("Marcus", "Gudmundsen", "marcus.gudmundsen@lexicon.se");
+        // System.out.println("Hello world!");
 
-        Person person3 = new Person("Göran", "Mårtensson", "goran.martensson@email.com");
+        PeopleDao peopleDao = new PeopleDaoImpl();
+        TodoItemsDao todoItemsDao = new TodoItemsDaoImpl();
 
-        System.out.println(person1.getSummary());
-        System.out.println(person2.getSummary());
+       /* Person person1 = new Person("Mehrdad", "Javan");
 
-        Todo todoItem1 = new Todo("Mend bicykle", "Flat tyre, need to change tube.","2024-11-05", person2);
+        Person person2 = new Person("Marcus", "Gudmundsen");
 
-        System.out.println(todoItem1.getSummary());
+        Person person3 = new Person("Göran", "Mårtensson");
 
-        TodoItemTask todoItemTask1 = new TodoItemTask(todoItem1);
 
-        System.out.println(todoItemTask1.getSummary()); */
+
+        peopleDao.create(person1);
+        peopleDao.create(person2);
+        peopleDao.create(person3);
+
+        System.out.println(person1);
+        System.out.println(person2);
+        System.out.println(person3);
+
+        Todo todoItem1 = new Todo("Mend bicykle", "Flat tyre, need to change tube.","2024-11-05");
+
+        System.out.println(todoItem1);
+
+        todoItemsDao.create(todoItem1);
+
+        System.out.println(todoItem1); */
+
+        todoItemsDao.deleteById(8);
 
 
 
