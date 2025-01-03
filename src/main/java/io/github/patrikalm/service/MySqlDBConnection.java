@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DataBaseConnection {
+public class MySqlDBConnection {
 
 
     public static Connection getConnection() throws SQLException {
