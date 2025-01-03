@@ -3,30 +3,43 @@ package io.github.patrikalm.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 public class Todo {
 
     private String title;
-    private String taskDescription;
+    private String description;
 
     private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private String deadLineDate;
     private LocalDate deadLine;
-    private boolean done = false;
+    private int done = 0;
+    private int id = 0;
+    private int assigneeId = 0;
 
 
+    public Todo(String title, String description, String deadLineDate) {
 
-    public Todo(String title, String taskDescription, String deadLineDate, Person creator) {
-
-        id = sequencer++;
         setTitle(title);
-        setTaskDescription(taskDescription);
+        setDescription(description);
         setDeadLine(deadLineDate);
     }
 
+    public Todo(int id, String title, String description, String deadLineDate) {
+        this(title, description, deadLineDate);
+        this.id = id;
+    }
+
+    public Todo(String title, String description, String deadLineDate, int doneStatus, int assigneeId){
+
+        this(title, description, deadLineDate);
+        this.done = doneStatus;
+        this.assigneeId = assigneeId;
+    }
+
     public int getId() {
-       //changed due to DAO implementation to public and to return int id
+
         return this.id;
     }
 
@@ -37,8 +50,6 @@ public class Todo {
 
     public void setTitle(String title) {
 
-
-
         if (title == null || title.equals(" ")) {
             throw new IllegalArgumentException("Can not be null or empty.");
         }
@@ -46,14 +57,14 @@ public class Todo {
         this.title = title;
     }
 
-    public String getTaskDescription() {
+    public String getDescription() {
 
-        return taskDescription;
+        return description;
     }
 
-    public void setTaskDescription(String taskDescription) {
+    public void setDescription(String description) {
 
-        this.taskDescription = taskDescription;
+        this.description = description;
 
     }
 
@@ -72,57 +83,30 @@ public class Todo {
         this.deadLine = LocalDate.parse(deadLineDate, dateFormat);
     }
 
-    public void setDone() {
-
-        this.done = true;
+    public int getAssigneeId() {
+        return assigneeId;
     }
 
-    public boolean isDone() {
+    public void setAssigneeId(int assigneeId) {
+        // Can also be set by constructor
+
+        this.assigneeId = assigneeId;
+    }
+
+    public void setDone(int doneStatus) {
+
+        // Changed to be able to set a value, logic works assumingly with only 0 (not done) and 1 (done) DB uses int not boolean
+        // Possibility to change through a constructor as well
+
+        this.done = doneStatus;
+    }
+
+    public int getDone() {
 
         return done;
     }
 
 
-
-
-   /* public String getSummary() {
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(System.lineSeparator());
-        sb.append("Todo id: ");
-        sb.append(id);
-        sb.append(System.lineSeparator());
-        sb.append("Task: ");
-        sb.append(title);
-        sb.append(System.lineSeparator());
-        sb.append("Description: ");
-        sb.append(taskDescription);
-        sb.append(System.lineSeparator());
-        sb.append("Deadline: ");
-        sb.append(deadLine);
-        sb.append(System.lineSeparator());
-        sb.append("Created by: ");
-        sb.append(creator.getFirstName());
-        sb.append(" ");
-        sb.append(creator.getLastName());
-        sb.append(", Email: ");
-        sb.append(creator.getEmail());
-        sb.append(System.lineSeparator());
-        sb.append("Status: ");
-
-        if (isDone()) {
-            sb.append("The task is done.");
-        }
-        else if (isOverdue()) {
-            sb.append("The task is overdue.");
-        }
-        else {
-            sb.append("The task is not done");
-        }
-
-        return sb.toString();
-    } */
 
     @Override
     public String toString() {
@@ -133,25 +117,38 @@ public class Todo {
         sb.append("Todo id: ");
         sb.append(id);
         sb.append(System.lineSeparator());
-        sb.append("Task: ");
+        sb.append("Todo title: ");
         sb.append(title);
         sb.append(System.lineSeparator());
         sb.append("Description: ");
-        sb.append(taskDescription);
+        sb.append(description);
         sb.append(System.lineSeparator());
         sb.append("Deadline: ");
         sb.append(deadLine);
         sb.append(System.lineSeparator());
         sb.append("Status: ");
 
-        if (isDone()) {
+        if (getDone() == 1) {
             sb.append("The task is done.");
         }
-        else if (isOverdue()) {
-            sb.append("The task is overdue.");
+        else if (getDone() == 0) {
+            sb.append("The task is not done");
         }
         else {
-            sb.append("The task is not done");
+            sb.append("Something is wrong with the status code ").append(getDone());
+        }
+
+        sb.append(System.lineSeparator());
+        sb.append("AssigneeID: ");
+
+        if (getAssigneeId() == 0) {
+            sb.append("No assignee registered.");
+        }
+        else if (getAssigneeId() > 0) {
+            sb.append(getAssigneeId());
+        }
+        else {
+            sb.append("Something is wrong with the ID code ").append(getAssigneeId());
         }
 
         return sb.toString();
@@ -161,23 +158,20 @@ public class Todo {
     @Override
     public boolean equals(Object obj) {
 
+        // No additional variables added as this existing fields will be sufficient to evaluate equality
+
         Todo localTodo = (Todo) obj;
 
-        if (this.id == localTodo.id
-        && this.title == localTodo.title
-        && this.taskDescription == localTodo.taskDescription
-        && this.deadLine == localTodo.deadLine) {
-
-            return true;
-        }
-
-        return false;
+        return this.id == localTodo.id
+                && Objects.equals(this.title, localTodo.title)
+                && Objects.equals(this.description, localTodo.description)
+                && this.deadLine == localTodo.deadLine;
     }
 
    @Override
     public int hashCode() {
 
-        return title.hashCode() + taskDescription.hashCode() + deadLine.hashCode();
+        return title.hashCode() + description.hashCode() + deadLine.hashCode();
    }
 
 }
