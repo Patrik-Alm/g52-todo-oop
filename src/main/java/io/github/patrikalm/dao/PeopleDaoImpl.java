@@ -68,7 +68,7 @@ public class PeopleDaoImpl implements PeopleDao {
                 return null;
             }
 
-            ArrayList<Person> persons = null;
+            ArrayList<Person> persons = new ArrayList<>();
 
             while (resultSet.next()) {
 
@@ -144,7 +144,7 @@ public class PeopleDaoImpl implements PeopleDao {
                 return null;
             }
 
-            ArrayList<Person> persons = null;
+            ArrayList<Person> persons = new ArrayList<>();
 
             while (resultSet.next()) {
 
