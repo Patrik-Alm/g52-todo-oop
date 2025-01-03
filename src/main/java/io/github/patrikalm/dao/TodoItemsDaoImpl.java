@@ -6,7 +6,7 @@ import io.github.patrikalm.model.Todo;
 import java.util.Collection;
 import java.util.List;
 
-public class TotoItemsDaoImpl implements TodoItemsDao {
+public class TodoItemsDaoImpl implements TodoItemsDao {
 
 
     @Override
