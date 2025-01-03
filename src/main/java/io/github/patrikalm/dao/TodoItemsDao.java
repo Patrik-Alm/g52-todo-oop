@@ -14,6 +14,6 @@ public interface TodoItemsDao {
     Collection<Todo> findByAssignee(int assigneeId);
     Collection<Todo> findByAssignee(Person person);
     Collection<Todo> findByUnassignedTodoItems();
-    Todo update(Todo);
+    Todo update(Todo todo);
     Boolean deleteById(int id);
 }
