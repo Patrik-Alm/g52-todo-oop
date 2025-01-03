@@ -14,7 +14,7 @@ public class Todo {
 
     private String deadLineDate;
     private LocalDate deadLine;
-    private int done = 0;
+    private boolean done = false;
     private int id = 0;
     private int assigneeId = 0;
 
@@ -26,15 +26,10 @@ public class Todo {
         setDeadLine(deadLineDate);
     }
 
-    public Todo(int id, String title, String description, String deadLineDate) {
+    public Todo(int id, String title, String description, String deadLineDate, boolean done, int assigneeId) {
         this(title, description, deadLineDate);
         this.id = id;
-    }
-
-    public Todo(String title, String description, String deadLineDate, int doneStatus, int assigneeId){
-
-        this(title, description, deadLineDate);
-        this.done = doneStatus;
+        this.done = done;
         this.assigneeId = assigneeId;
     }
 
@@ -50,6 +45,7 @@ public class Todo {
 
     public void setTitle(String title) {
 
+        // TODO - The instance must at least have a title, assumption done here
         if (title == null || title.equals(" ")) {
             throw new IllegalArgumentException("Can not be null or empty.");
         }
@@ -93,19 +89,20 @@ public class Todo {
         this.assigneeId = assigneeId;
     }
 
-    public void setDone(int doneStatus) {
-
-        // Changed to be able to set a value, logic works assumingly with only 0 (not done) and 1 (done) DB uses int not boolean
-        // Possibility to change through a constructor as well
+    public void setDone(boolean doneStatus) {
 
         this.done = doneStatus;
     }
 
-    public int getDone() {
+    public boolean isDone() {
 
         return done;
     }
 
+   public void setId(int id) {
+        // Not to use except when adding a new instance to the database.
+        this.id = id;
+    }
 
 
     @Override
@@ -128,14 +125,14 @@ public class Todo {
         sb.append(System.lineSeparator());
         sb.append("Status: ");
 
-        if (getDone() == 1) {
+        if (isDone() == 1) {
             sb.append("The task is done.");
         }
-        else if (getDone() == 0) {
+        else if (isDone() == 0) {
             sb.append("The task is not done");
         }
         else {
-            sb.append("Something is wrong with the status code ").append(getDone());
+            sb.append("Something is wrong with the status code ").append(isDone());
         }
 
         sb.append(System.lineSeparator());
@@ -152,8 +149,9 @@ public class Todo {
         }
 
         return sb.toString();
-
     }
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -173,5 +171,6 @@ public class Todo {
 
         return title.hashCode() + description.hashCode() + deadLine.hashCode();
    }
+
 
 }
