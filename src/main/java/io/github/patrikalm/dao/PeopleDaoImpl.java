@@ -69,11 +69,6 @@ public class PeopleDaoImpl implements PeopleDao {
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM person");
 
-            if (resultSet.getInt("person_id") < 1) {
-                System.out.println("Nothing is found.");
-                return null;
-            }
-
             ArrayList<Person> persons = new ArrayList<>();
 
             while (resultSet.next()) {
@@ -91,6 +86,7 @@ public class PeopleDaoImpl implements PeopleDao {
             }
 
             return persons;
+
 
     } catch (SQLException e) {
 
@@ -144,26 +140,25 @@ public class PeopleDaoImpl implements PeopleDao {
 
             ResultSet resultSet = preparedstatement.executeQuery();
 
-            if (resultSet.getInt("person_id") < 1) {
-
-                System.out.println("Nothing is found.");
-                return null;
-            }
-
             ArrayList<Person> persons = new ArrayList<>();
 
-            while (resultSet.next()) {
+                while (resultSet.next()) {
 
-                int id = resultSet.getInt("person_id");
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
+                    int id = resultSet.getInt("person_id");
+                    String firstName = resultSet.getString("first_name");
+                    String lastName = resultSet.getString("last_name");
 
-                Person person = new Person(id, firstName, lastName);
+                    Person person = new Person(id, firstName, lastName);
 
-                persons.add(person);
-            }
+                    try {
+                        persons.add(person);
+                    } catch (RuntimeException e) {
+                        throw new RuntimeException("Something went wrong when adding to ArrayList persons " + e.getMessage());
+                    }
+                }
 
-            return persons;
+                return persons;
+
 
         } catch (SQLException e) {
 

@@ -16,6 +16,10 @@ public class Person {
         setFirstName(firstName);
         setLastName(lastName);
     }
+    // Used for verifying
+    public Person() {
+
+    }
 
     public Person(int id, String firstName, String lastName) {
         this(firstName, lastName);
